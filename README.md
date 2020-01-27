@@ -1,4 +1,4 @@
-# traversy_todo
+# Sample_todo
 
 ## Project setup
 ```
