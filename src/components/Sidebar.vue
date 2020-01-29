@@ -1,4 +1,4 @@
-<template>    
+<template>
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">Start Bootstrap </div>
@@ -6,8 +6,7 @@
                 <a href="#" class="list-group-item list-group-item-action bg-light" v-bind:key="menu.id" v-for="menu in menu_list" @click="load_page(menu.name)">{{ menu.name }} </a>
             </div>
         </div>
-    <!-- /#sidebar-wrapper -->
-   
+    <!-- /#sidebar-wrapper -->   
 </template>
 
 
@@ -42,7 +41,7 @@ export default {
                     path: '#'
                 }
 
-        ],
+            ],
         }
     },
     methods: {
