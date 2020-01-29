@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="d-flex">
-   <Sidebar v-bind:menus="menu_list"/>
+   <Sidebar/>
    <Body/>  
 
   </div>
@@ -22,31 +22,9 @@ export default {
   ,
   data(){
     return {
-      menu_list: [
-        {
-          id: 1,
-          name: 'Dashboard',
-          path: '#'
-        },
-        {
-          id: 3,
-          name: 'Shortcuts',
-          path: '#'
-        },
-        {
-          id: 4,
-          name: 'Overview',
-          path: '#'
-        },
-        {
-          id: 5,
-          name: 'Events',
-          path: '#'
-        }
-
-      ],
+      
     }
-  }
+  },
   
 }
 </script>

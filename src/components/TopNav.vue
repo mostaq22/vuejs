@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     
-                    <li class="nav-item " v-bind:class="{dropdown: top_menu.child }" v-bind:key="top_menu.id" v-for="top_menu in top_menus">
+                    <li class="nav-item " v-bind:class="{dropdown: top_menu.child }" v-bind:key="top_menu.id" v-for="top_menu in top_menu_list">
                         <a class="nav-link" v-bind:class="{'dropdown-toggle': top_menu.child }" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{top_menu.name }}
                         </a>
@@ -28,6 +28,39 @@
 <script>
 export default {
     name: "TopNav",
-    props: ['top_menus',]
+    props: ['top_menus',],
+    data(){
+        return {
+            top_menu_list: [
+                {
+                id: 1,
+                name: 'Home',
+                child: false
+                },
+                
+                {
+                id: 2,
+                name: 'Link',
+                child: false
+                },
+                {
+                id: 3,
+                name: 'Dropdown',
+                child: [
+                    {
+                    id: 1,
+                    name: 'Edit'
+                    },
+                    {
+                    id: 2,
+                    name: 'Delete'
+                    },
+
+                ]
+                },
+
+            ]
+        }
+    },
 }
 </script>
