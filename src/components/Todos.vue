@@ -3,57 +3,52 @@
         <h1>Todo List</h1>
         <hr>
         <ul class="list-group">
-            <li v-bind:key="todo.id" v-for="todo in todo_list" class="list-group-item" v-bind:class="todo.completed ? 'list-group-item-success' : 'list-group-item-warning'">
-                {{ todo.title  }}
-            </li>
+            <li v-bind:key="post.id" v-for="post in posts" class="list-group-item">
+                <h3>{{ post.title  }}</h3>
+                <hr>
+                <button class="btn btn-primary btn-sm">Comments</button>
+                <br/>                
+                <!-- Comments Component-->
+                <Comments v-bind:post="post" v-bind:style="{'margin-left':`100px`}"/>
+            </li>           
         </ul>
     </div>    
 </template>
 
 <script>
+import Comments from './Comments'
 export default {
     name: "Todos",
+    components: {
+        Comments
+    },
     props: [],
     data(){
          return {
-             todo_list: null,
-         }
+            posts: null,
+            posts_condition: {
+
+            }
+        }
     },
     created: function(){
        setTimeout(()=> {
-           console.log('Fired...')
-           this.load_todo();
-       },5000)
+            this.load_todo();
+       },1000)
        
     },
     methods: {
         load_todo: function()
         {
-            fetch('https://jsonplaceholder.typicode.com/todos/')
+            fetch('https://jsonplaceholder.typicode.com/posts/')
             .then(response => response.json())
-            .then(todo_data => {
-                // console.log(json)
-                this.todo_list = todo_data
+            .then(data => {
+                this.posts = data;
+                data.map(function(d){
+                    // console.log(d)
+                    this.posts_condition['s_'+d.id] = d.id;
+                });
             })
-
-            
-            // this.todo_list = [
-            //     {
-            //         id: 1,
-            //         title: "Install VueJs Framework",
-            //         completed: 'completed'
-            //     },
-            //     {
-            //         id: 2,
-            //         title: "Follow a tuts",
-            //         completed: 'completed'
-            //     },
-            //     {
-            //         id: 3,
-            //         title: "Understand eco-system of VueJs",
-            //         completed: 'pending'
-            //     },
-            // ]
         },
     }
      
